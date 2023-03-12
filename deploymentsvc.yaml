@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysite-react
+  labels:
+    app: mysite-react
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysite-react
+  template:
+    metadata:
+      labels:
+        app: mysite-react
+    spec:
+      containers:
+      - name: mysite-react
+        image: aarathytraining/mysite-react:89
+        ports:
+        - containerPort: 80
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysite-react-service
+spec:
+  selector:
+    app: mysite-react
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 31110
