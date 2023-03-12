@@ -16,11 +16,10 @@ spec:
     spec:
       containers:
       - name: mysite-react
-        image: aarathytraining/mysite-react:89
+        image: IMAGE_NAME
         ports:
         - containerPort: 80
-
-
+        
 ---
 
 apiVersion: v1
